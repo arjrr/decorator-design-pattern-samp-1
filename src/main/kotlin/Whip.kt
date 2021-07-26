@@ -1,13 +1,17 @@
 class Whip(
-    private val beverage: Beverage
+    beverage: Beverage
 ) : CondimentDecorator() {
 
-    override fun getBeverageDescription(): String {
-        return beverage.description + " + Whip"
+    init {
+        component = beverage
     }
 
+    override var description: String
+        get() = component.description + " + Whip"
+        set(value) {}
+
     override fun cost(): Double {
-        return .25 + beverage.cost()
+        return .25 + component.cost()
     }
 
 }

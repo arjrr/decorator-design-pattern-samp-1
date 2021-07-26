@@ -6,8 +6,10 @@ fun main() {
 
     /** Decorating the coffee with condiment (Decorator) */
     beverage = Whip(beverage)
+    beverage = Whip(beverage)
+    beverage = Whip(beverage)
 
     /** Showing beverage with condiment */
-    println("Beverage: ${beverage.getBeverageDescription()} \nCost: ${beverage.cost()}")
+    println("Beverage: ${beverage.description} \nCost: ${beverage.cost()}")
 
 }
