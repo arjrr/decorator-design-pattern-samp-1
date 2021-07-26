@@ -1,3 +1,1 @@
-abstract class CondimentDecorator : Beverage() {
-    lateinit var component: Beverage
-}
+abstract class CondimentDecorator : Beverage()

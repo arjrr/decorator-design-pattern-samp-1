@@ -50,9 +50,7 @@ abstract class Beverage {
 **CondimentDecorator (Decorator)**
 
 ```kotlin
-abstract class CondimentDecorator : Beverage() {
-    lateinit var component: Beverage
-}
+abstract class CondimentDecorator : Beverage()
 ```
 
 **EspressoCoffee (Concrete Component)**
@@ -73,19 +71,15 @@ class EspressoCoffee : Beverage() {
 
 ```kotlin
 class Whip(
-    beverage: Beverage
+    private val beverage: Beverage
 ) : CondimentDecorator() {
 
-    init {
-        component = beverage
-    }
-
     override var description: String
-        get() = component.description + " + Whip"
+        get() = beverage.description + " + Whip"
         set(value) {}
 
     override fun cost(): Double {
-        return .25 + component.cost()
+        return .25 + beverage.cost()
     }
 
 }
