@@ -1,5 +1,4 @@
 class EspressoCoffee : Beverage() {
-
     init {
         description = "Espresso Coffee"
     }

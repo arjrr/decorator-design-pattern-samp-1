@@ -42,7 +42,7 @@ Inserindo condimentos em uma bebida dinamicamente:
 
 ```kotlin
 abstract class Beverage {
-    var description: String = "Unknown Beverage"
+    open var description: String = "Unknown Beverage"
     abstract fun cost(): Double
 }
 ```
@@ -51,7 +51,7 @@ abstract class Beverage {
 
 ```kotlin
 abstract class CondimentDecorator : Beverage() {
-    abstract fun getBeverageDescription(): String
+    lateinit var component: Beverage
 }
 ```
 
@@ -73,15 +73,19 @@ class EspressoCoffee : Beverage() {
 
 ```kotlin
 class Whip(
-    private val beverage: Beverage
+    beverage: Beverage
 ) : CondimentDecorator() {
 
-    override fun getBeverageDescription(): String {
-        return beverage.description + " + Whip"
+    init {
+        component = beverage
     }
 
+    override var description: String
+        get() = component.description + " + Whip"
+        set(value) {}
+
     override fun cost(): Double {
-        return .25 + beverage.cost()
+        return .25 + component.cost()
     }
 
 }
@@ -98,9 +102,11 @@ fun main() {
 
     /** Decorating the coffee with condiment (Decorator) */
     beverage = Whip(beverage)
+    beverage = Whip(beverage)
+    beverage = Whip(beverage)
 
     /** Showing beverage with condiment */
-    println("Beverage: ${beverage.getBeverageDescription()} \nCost: ${beverage.cost()}")
+    println("Beverage: ${beverage.description} \nCost: ${beverage.cost()}")
 
 }
 ```
