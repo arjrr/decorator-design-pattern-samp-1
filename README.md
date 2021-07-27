@@ -50,7 +50,9 @@ abstract class Beverage {
 **CondimentDecorator (Decorator)**
 
 ```kotlin
-abstract class CondimentDecorator : Beverage()
+abstract class CondimentDecorator : Beverage() {
+    abstract override var description: String
+}
 ```
 
 **EspressoCoffee (Concrete Component)**
