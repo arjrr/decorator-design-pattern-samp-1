@@ -1,7 +1,6 @@
 ## Decorator (_Design Pattern_)
-Exemplo de implementação básica do padrão de projeto _Decorator_.
 
-Linguagem: Kotlin
+Exemplo de implementação básica do padrão de projeto _Decorator_.
 
 ## Definição
 
